@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77f209541bb80f645b91de1150e7ba1c, type: 3}
+  m_Name: Fuselage0
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnManagerScriptableObject
+  sprite: {fileID: 3333699626299843240, guid: 8c517acecd7a8514ca3a6020fe460297, type: 3}
+  family: 0
+  hitPoints: 2
+  thrust: 0
+  turnSpeed: 3
+  system: 5
+  heatSink: 5
+  damage: 0

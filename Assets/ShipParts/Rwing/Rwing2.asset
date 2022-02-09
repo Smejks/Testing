@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151e51cb06fb939469d1d65198260079, type: 3}
+  m_Name: Rwing2
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 6958541600410556711, guid: 6be5fb145cff52745889d11909fc9950, type: 3}
+  partType: 4
+  family: 2
+  hitPoints: 2
+  thrust: 0
+  turnSpeed: 0
+  system: 0
+  heatSink: 2
+  damage: 1

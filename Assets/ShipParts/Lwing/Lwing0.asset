@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de957c24d5037c45a98de63905691be, type: 3}
+  m_Name: Lwing0
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 2248955028935865529, guid: 3eef37eb6c19c6f42b77057d9138a3ec, type: 3}
+  partType: 3
+  family: 0
+  hitPoints: 0
+  thrust: 0
+  turnSpeed: 2
+  system: 1
+  heatSink: 2
+  damage: 0
