@@ -28,9 +28,9 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        hitPoints = GetComponent<ShipPartController>().myHitPoints;
+        hitPoints = GetComponent<ShipPartController>().myHitPoints * 10;
         thrust = GetComponent<ShipPartController>().myThrust;
-        turnSpeed = GetComponent<ShipPartController>().myTurnSpeed;
+        turnSpeed = GetComponent<ShipPartController>().myTurnSpeed / 5;
         system = GetComponent<ShipPartController>().mySystem;
         heatSink = GetComponent<ShipPartController>().myHeatSink;
         damage = GetComponent<ShipPartController>().myDamage;
@@ -51,7 +51,7 @@ public class Movement : MonoBehaviour
             Strafe();
 
         Rotate();
-        //ApplyBoost();
+        ApplyBoost();
 
 
 
@@ -86,13 +86,13 @@ public class Movement : MonoBehaviour
             rotationAcceleration += Time.deltaTime * 10;
             rb.AddTorque(-turnSpeed * 0.3f);
         }
-        else
-        {
-            Debug.Log("Reseting Rotation");
-            rotationAcceleration = 0;
-            if (!Camera.main.GetComponent<LookAtPlayer>().cameraRelative)
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, 0.001f);
-        }
+        //else
+        //{
+        //    Debug.Log("Reseting Rotation");
+        //    rotationAcceleration = 0;
+        //    if (!Camera.main.GetComponent<LookAtPlayer>().cameraRelative)
+        //        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, 0.001f);
+        //}
     }
 
 
@@ -103,15 +103,16 @@ public class Movement : MonoBehaviour
 
     void ApplyThrust()
     {
-        rb.AddForce(transform.up * thrust * y);
+        rb.AddForce(transform.up * turnSpeed * y);
     }
 
-    //void ApplyBoost() {
+    void ApplyBoost()
+    {
 
-    //    if (boostIsActive)
-    //    thrust = Mathf.Clamp(thrust, 0, 4f);
-    //    else
-    //    thrust = Mathf.Clamp(thrust, 0, 1.5f);
-    //}
+        if (boostIsActive)
+            thrust = Mathf.Clamp(thrust, 0, 4f);
+        else
+            thrust = Mathf.Clamp(thrust, 0, 1.5f);
+    }
 }
 

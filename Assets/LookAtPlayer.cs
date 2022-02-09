@@ -16,7 +16,7 @@ public class LookAtPlayer : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.T))
             cameraRelative = !cameraRelative;
 
         if (cameraRelative) {
