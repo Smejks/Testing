@@ -18,16 +18,22 @@ public class ShipPartController : MonoBehaviour
     public Lwing myLwing;
     public Rwing myRwing;
 
+    public float myHitPoints;
+    public float myThrust;
+    public float myTurnSpeed;
+    public float mySystem;
+    public float myHeatSink;
+    public float myDamage;
+
     private void Start()
     {
-
+        
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
             RandomizeShip();
-
     }
 
     private void RandomizeShip()
@@ -55,6 +61,12 @@ public class ShipPartController : MonoBehaviour
             myLwing = Lwings[wing];
             myRwing = Rwings[wing];
         }
+        myHitPoints = 1 + myFuselage.hitPoints + myNose.hitPoints + myTail.hitPoints + myLwing.hitPoints + myRwing.hitPoints / 1000;
+        myThrust = 1 + myFuselage.thrust + myNose.thrust + myTail.thrust + myLwing.thrust + myRwing.thrust / 1000;
+        myTurnSpeed = 1 + myFuselage.turnSpeed + myNose.turnSpeed + myTail.turnSpeed + myLwing.turnSpeed + myRwing.turnSpeed;
+        mySystem = 1 + myFuselage.system + myNose.system + myTail.system + myLwing.system + myRwing.system / 1000;
+        myHeatSink = 1 + myFuselage.heatSink + myNose.heatSink + myTail.heatSink + myLwing.heatSink + myRwing.heatSink / 1000;
+        myDamage = 1 + myFuselage.damage + myNose.damage + myTail.damage + myLwing.damage + myRwing.damage / 1000;
         BuildShip();
 
     }
