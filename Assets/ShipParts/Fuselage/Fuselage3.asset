@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77f209541bb80f645b91de1150e7ba1c, type: 3}
-  m_Name: Fuselage0
+  m_Name: Fuselage3
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManagerScriptableObject
-  sprite: {fileID: 3333699626299843240, guid: 8c517acecd7a8514ca3a6020fe460297, type: 3}
+  sprite: {fileID: 7934992714411362080, guid: c526adcf28bc7a04f9e299e41dfe2f18, type: 3}
   partType: 0
-  family: 0
-  hitPoints: 2
-  thrust: 0
-  turnSpeed: 2
-  system: 6
-  heatSink: 5
-  damage: 0
-  ModuleHardpoint: 2
+  family: 3
+  hitPoints: 5
+  thrust: 2
+  turnSpeed: 3
+  system: 0
+  heatSink: 0
+  damage: 5
+  ModuleHardpoint: 1

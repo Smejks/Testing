@@ -10,7 +10,7 @@ public class CameraZoom : MonoBehaviour
 
     private void LateUpdate() {
 
-        Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, (3 + targetRB.velocity.magnitude), 0.001f);
-        Mathf.Clamp(Camera.main.orthographicSize, 3, 30);
+        Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, (3 + targetRB.velocity.magnitude), 0.01f);
+        Mathf.Clamp(Camera.main.orthographicSize, 12, 50);
     }
 }

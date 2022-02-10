@@ -12,7 +12,7 @@ public class Attack : MonoBehaviour
 
     public void GenerateAttackStats()
     {
-        damage = GetComponent<ShipPartController>().myHitPoints * 10;
+        damage = GetComponent<ShipPartController>().myDamage;
         heatSink = GetComponent<ShipPartController>().myHeatSink;
         weaponHardpoints = GetComponent<ShipPartController>().myWeaponHardpoints;
         moduleHardpoints = GetComponent<ShipPartController>().myModuleHardpoints;

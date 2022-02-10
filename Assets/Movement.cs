@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
 
     float rotationAcceleration;
     bool boostIsActive;
+    Vector3 mousePos;
 
     Rigidbody2D rb;
 
@@ -34,6 +35,7 @@ public class Movement : MonoBehaviour
         heatSink = GetComponent<ShipPartController>().myHeatSink;
 
         rb.angularDrag = turnSpeed / 6;
+        rb.drag = thrust / 4;
     }
 
     private void LateUpdate()
@@ -68,7 +70,7 @@ public class Movement : MonoBehaviour
     void ApplyThrust()
     {
         thrust += Time.deltaTime;
-        rb.AddForce(transform.up * thrust * y);
+        rb.AddForce(transform.up * thrust * y * Time.deltaTime * 200);
     }
 
     void ApplyBoost()
@@ -84,17 +86,20 @@ public class Movement : MonoBehaviour
 
     void Rotate()
     {
+        //Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        //difference.Normalize();
+        //float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, 0f, rotation_z - 90));
 
         if (clockWise)
         {
-            rotationAcceleration += Time.deltaTime * 10;
-            rb.AddTorque(turnSpeed * 0.3f);
+            rb.AddTorque(turnSpeed * Time.deltaTime * 80);
         }
         else if (counterClockWise)
         {
-            rotationAcceleration += Time.deltaTime * 10;
-            rb.AddTorque(-turnSpeed * 0.3f);
+            rb.AddTorque(-turnSpeed * Time.deltaTime * 80);
         }
+
         //else
         //{
         //    Debug.Log("Reseting Rotation");
@@ -107,7 +112,7 @@ public class Movement : MonoBehaviour
 
     void Strafe()
     {
-        rb.AddForce(transform.right * turnSpeed * x);
+        rb.AddForce(transform.right * thrust * x * Time.deltaTime * 200);
     }
 
 }
