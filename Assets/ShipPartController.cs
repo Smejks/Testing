@@ -20,6 +20,9 @@ public class ShipPartController : MonoBehaviour
     public Rwing myRwing;
 
     Movement movement;
+    Attack attack;
+    Health health;
+    ShipSystem shipSystem;
 
     public float myHitPoints;
     public float myThrust;
@@ -27,10 +30,15 @@ public class ShipPartController : MonoBehaviour
     public float mySystem;
     public float myHeatSink;
     public float myDamage;
+    public int myWeaponHardpoints;
+    public int myModuleHardpoints;
 
     private void Start()
     {
-        movement = transform.GetComponent<Movement>();
+        movement = GetComponent<Movement>();
+        attack = GetComponent<Attack>();
+        health = GetComponent<Health>();
+        shipSystem = GetComponent<ShipSystem>();
     }
 
     private void Update()
@@ -64,14 +72,27 @@ public class ShipPartController : MonoBehaviour
             myLwing = Lwings[wing];
             myRwing = Rwings[wing];
         }
-        myHitPoints = 1 + myFuselage.hitPoints + myNose.hitPoints + myTail.hitPoints + myLwing.hitPoints + myRwing.hitPoints;
+
+        myHitPoints = 5 + myFuselage.hitPoints + myNose.hitPoints + myTail.hitPoints + myLwing.hitPoints + myRwing.hitPoints;
         myThrust = 1 + myFuselage.thrust + myNose.thrust + myTail.thrust + myLwing.thrust + myRwing.thrust;
-        myTurnSpeed = 1 + myFuselage.turnSpeed + myNose.turnSpeed + myTail.turnSpeed + myLwing.turnSpeed + myRwing.turnSpeed;
-        mySystem = 1 + myFuselage.system + myNose.system + myTail.system + myLwing.system + myRwing.system;
-        myHeatSink = 1 + myFuselage.heatSink + myNose.heatSink + myTail.heatSink + myLwing.heatSink + myRwing.heatSink;
-        myDamage = 1 + myFuselage.damage + myNose.damage + myTail.damage + myLwing.damage + myRwing.damage;
-        BuildShip();
-        movement.GenerateStats();
+        myTurnSpeed = myFuselage.turnSpeed + myNose.turnSpeed + myTail.turnSpeed + myLwing.turnSpeed + myRwing.turnSpeed;
+        mySystem = myFuselage.system + myNose.system + myTail.system + myLwing.system + myRwing.system;
+        myHeatSink = myFuselage.heatSink + myNose.heatSink + myTail.heatSink + myLwing.heatSink + myRwing.heatSink;
+        myDamage = myFuselage.damage + myNose.damage + myTail.damage + myLwing.damage + myRwing.damage;
+        myWeaponHardpoints = myNose.WeaponHardpoint + myLwing.WeaponHardpoint + myRwing.WeaponHardpoint;
+        myModuleHardpoints = myFuselage.ModuleHardpoint + myNose.ModuleHardpoint + myLwing.ModuleHardpoint + myRwing.ModuleHardpoint;
+
+        if (myWeaponHardpoints < 1)
+            RandomizeShip();
+        else
+        {
+            BuildShip();
+            movement.GenerateMovementStats();
+            attack.GenerateAttackStats();
+            health.GenerateHealthStats();
+            shipSystem.GenerateSystemStats();
+        }
+
     }
 
     private void BuildShip()
@@ -81,7 +102,6 @@ public class ShipPartController : MonoBehaviour
             for (int i = 0; i < BuiltParts.Count; i++)
             {
                 Destroy(transform.GetChild(i).GetChild(0).gameObject);
-
             }
             BuiltParts.Clear();
         }

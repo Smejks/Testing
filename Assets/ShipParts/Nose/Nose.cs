@@ -15,5 +15,7 @@ public class Nose : ScriptableObject
     public float system;
     public float heatSink;
     public float damage;
- 
+    [Header("Hardpoints")]
+    public int WeaponHardpoint;
+    public int ModuleHardpoint;
 }

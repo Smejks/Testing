@@ -15,9 +15,10 @@ MonoBehaviour:
   sprite: {fileID: 2277345123108340638, guid: c16c332e8afa9ef4a9f26bea7a11219c, type: 3}
   partType: 0
   family: 1
-  hitPoints: 1
+  hitPoints: 0
   thrust: 5
   turnSpeed: 5
-  system: 1
+  system: 0
   heatSink: 2
   damage: 3
+  ModuleHardpoint: 0

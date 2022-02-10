@@ -8,12 +8,9 @@ public class Movement : MonoBehaviour
     float x, y;
     bool clockWise, counterClockWise;
 
-    public float hitPoints;
     public float thrust;
     public float turnSpeed;
-    public float system;
     public float heatSink;
-    public float damage;
 
     float rotationAcceleration;
     bool boostIsActive;
@@ -30,14 +27,13 @@ public class Movement : MonoBehaviour
     {
     }
 
-    public void GenerateStats()
+    public void GenerateMovementStats()
     {
-        hitPoints = GetComponent<ShipPartController>().myHitPoints * 10;
         thrust = GetComponent<ShipPartController>().myThrust / 5;
-        turnSpeed = GetComponent<ShipPartController>().myTurnSpeed / 5;
-        system = GetComponent<ShipPartController>().mySystem;
+        turnSpeed = GetComponent<ShipPartController>().myTurnSpeed / 2;
         heatSink = GetComponent<ShipPartController>().myHeatSink;
-        damage = GetComponent<ShipPartController>().myDamage;
+
+        rb.angularDrag = turnSpeed / 6;
     }
 
     private void LateUpdate()

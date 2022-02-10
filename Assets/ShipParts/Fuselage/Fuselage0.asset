@@ -16,8 +16,9 @@ MonoBehaviour:
   partType: 0
   family: 0
   hitPoints: 2
-  thrust: 1
+  thrust: 0
   turnSpeed: 3
   system: 5
   heatSink: 5
-  damage: 1
+  damage: 0
+  ModuleHardpoint: 2

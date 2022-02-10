@@ -15,5 +15,8 @@ public class Fuselage : ScriptableObject
     public float system;
     public float heatSink;
     public float damage;
- 
+    [Header("Hardpoints")]
+    public int ModuleHardpoint;
+
+
 }

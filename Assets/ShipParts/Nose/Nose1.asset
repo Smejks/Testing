@@ -21,3 +21,5 @@ MonoBehaviour:
   system: 0
   heatSink: 1
   damage: 2
+  WeaponHardpoint: 1
+  ModuleHardpoint: 0
