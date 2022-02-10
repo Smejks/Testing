@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ShipPartController : MonoBehaviour
 {
+    [Header("Parts")]
     [SerializeField] List<Fuselage> Fuselages = new List<Fuselage>();
     [SerializeField] List<Nose> Noses = new List<Nose>();
     [SerializeField] List<Tail> Tails = new List<Tail>();
@@ -18,6 +19,8 @@ public class ShipPartController : MonoBehaviour
     public Lwing myLwing;
     public Rwing myRwing;
 
+    Movement movement;
+
     public float myHitPoints;
     public float myThrust;
     public float myTurnSpeed;
@@ -27,7 +30,7 @@ public class ShipPartController : MonoBehaviour
 
     private void Start()
     {
-        
+        movement = transform.GetComponent<Movement>();
     }
 
     private void Update()
@@ -68,7 +71,7 @@ public class ShipPartController : MonoBehaviour
         myHeatSink = 1 + myFuselage.heatSink + myNose.heatSink + myTail.heatSink + myLwing.heatSink + myRwing.heatSink;
         myDamage = 1 + myFuselage.damage + myNose.damage + myTail.damage + myLwing.damage + myRwing.damage;
         BuildShip();
-
+        movement.GenerateStats();
     }
 
     private void BuildShip()
@@ -89,6 +92,7 @@ public class ShipPartController : MonoBehaviour
         BuiltParts.Add(Instantiate(myTail.sprite, transform.GetChild(2)));
         BuiltParts.Add(Instantiate(myLwing.sprite, transform.GetChild(3)));
         BuiltParts.Add(Instantiate(myRwing.sprite, transform.GetChild(4)));
+        
     }
 
 

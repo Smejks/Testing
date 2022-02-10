@@ -28,8 +28,12 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+    }
+
+    public void GenerateStats()
+    {
         hitPoints = GetComponent<ShipPartController>().myHitPoints * 10;
-        thrust = GetComponent<ShipPartController>().myThrust;
+        thrust = GetComponent<ShipPartController>().myThrust / 5;
         turnSpeed = GetComponent<ShipPartController>().myTurnSpeed / 5;
         system = GetComponent<ShipPartController>().mySystem;
         heatSink = GetComponent<ShipPartController>().myHeatSink;
@@ -38,24 +42,16 @@ public class Movement : MonoBehaviour
 
     private void LateUpdate()
     {
-        ReadInputs();
-
-        thrust += Time.deltaTime * 2;
-
-
         if (y != 0)
         {
             ApplyThrust();
         }
         if (x != 0)
             Strafe();
-
+        
+        ReadInputs();
         Rotate();
         ApplyBoost();
-
-
-
-
     }
 
     private void ReadInputs()
@@ -71,6 +67,23 @@ public class Movement : MonoBehaviour
             boostIsActive = false;
 
 
+    }
+
+    void ApplyThrust()
+    {
+        thrust += Time.deltaTime;
+        rb.AddForce(transform.up * thrust * y);
+    }
+
+    void ApplyBoost()
+    {
+
+        if (boostIsActive) { 
+            thrust += Time.deltaTime * 2;
+        thrust = Mathf.Clamp(thrust, 0, GetComponent<ShipPartController>().myThrust / 5 * 2);
+    }
+        else
+            thrust = Mathf.Clamp(thrust, 0, GetComponent<ShipPartController>().myThrust / 5);
     }
 
     void Rotate()
@@ -101,18 +114,5 @@ public class Movement : MonoBehaviour
         rb.AddForce(transform.right * turnSpeed * x);
     }
 
-    void ApplyThrust()
-    {
-        rb.AddForce(transform.up * turnSpeed * y);
-    }
-
-    void ApplyBoost()
-    {
-
-        if (boostIsActive)
-            thrust = Mathf.Clamp(thrust, 0, 4f);
-        else
-            thrust = Mathf.Clamp(thrust, 0, 1.5f);
-    }
 }
 

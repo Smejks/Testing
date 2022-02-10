@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Fuselage2
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManagerScriptableObject
   sprite: {fileID: 8740260740154135223, guid: 76dffa0285050664fa80e1b89161d616, type: 3}
+  partType: 0
   family: 2
   hitPoints: 5
-  thrust: 0
-  turnSpeed: 0
+  thrust: 1
+  turnSpeed: 1
   system: 2
   heatSink: 3
   damage: 5
