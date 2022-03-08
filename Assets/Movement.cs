@@ -14,14 +14,14 @@ public class Movement : MonoBehaviour
 
     float rotationAcceleration;
     bool boostIsActive;
-    Vector3 mousePos;
+    bool cameraRelative;
+    Vector2 direction;
 
     Rigidbody2D rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
     }
 
     private void Update()
@@ -40,16 +40,25 @@ public class Movement : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (y != 0)
-        {
-            ApplyThrust();
-        }
-        if (x != 0)
-            Strafe();
+        Debug.Log(cameraRelative);
+        //if (y != 0)
+        //{
+        //    ApplyThrust();
+        //}
+        //if (x != 0)
+        //    Strafe();
         
         ReadInputs();
-        Rotate();
         ApplyBoost();
+
+        if (Input.GetKeyDown(KeyCode.T))
+            cameraRelative = !cameraRelative;
+
+        if (cameraRelative)
+        FlyByKeys();
+        else
+        FlyByMouse();
+        
     }
 
     private void ReadInputs()
@@ -63,34 +72,27 @@ public class Movement : MonoBehaviour
             boostIsActive = true;
         if (Input.GetKeyUp(KeyCode.LeftShift))
             boostIsActive = false;
-
-
     }
 
-    void ApplyThrust()
-    {
-        thrust += Time.deltaTime;
-        rb.AddForce(transform.up * thrust * y * Time.deltaTime * 200);
-    }
+    //void ApplyThrust()
+    //{
+    //    thrust += Time.deltaTime;
+    //    rb.AddForce(transform.up * thrust * y * Time.deltaTime * 200);
+    //}
 
     void ApplyBoost()
     {
 
         if (boostIsActive) { 
-            thrust += Time.deltaTime * 2;
+        thrust += Time.deltaTime * 2;
         thrust = Mathf.Clamp(thrust, 0, GetComponent<ShipPartController>().myThrust / 5 * 2);
     }
         else
             thrust = Mathf.Clamp(thrust, 0, GetComponent<ShipPartController>().myThrust / 5);
     }
 
-    void Rotate()
+    void FlyByKeys()
     {
-        //Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        //difference.Normalize();
-        //float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, 0f, rotation_z - 90));
-
         if (clockWise)
         {
             rb.AddTorque(turnSpeed * Time.deltaTime * 80);
@@ -99,6 +101,11 @@ public class Movement : MonoBehaviour
         {
             rb.AddTorque(-turnSpeed * Time.deltaTime * 80);
         }
+
+        thrust += Time.deltaTime;
+        rb.AddForce(transform.up * thrust * y * Time.deltaTime * 200);
+
+        rb.AddForce(transform.right * thrust * x * Time.deltaTime * 200);
 
         //else
         //{
@@ -109,11 +116,23 @@ public class Movement : MonoBehaviour
         //}
     }
 
-
-    void Strafe()
+    private void FlyByMouse()
     {
-        rb.AddForce(transform.right * thrust * x * Time.deltaTime * 200);
+        direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
+
+        thrust += Time.deltaTime;
+        rb.AddForce(Vector2.up * thrust * y * Time.deltaTime * 200);
+        rb.AddForce(Vector2.right * thrust * x * Time.deltaTime * 200);
     }
+
+    //void Strafe()
+    //{
+    //    rb.AddForce(transform.right * thrust * x * Time.deltaTime * 200);
+    //}
 
 }
 

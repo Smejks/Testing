@@ -29,9 +29,9 @@ public class LookAtPlayer : MonoBehaviour
         }
 
 
-            targetPos = new Vector3(target.transform.position.x, target.transform.position.y, -10);
+        targetPos = new Vector3(target.transform.position.x, target.transform.position.y, -10);
         transform.position = targetPos;
-        
+
 
 
 
