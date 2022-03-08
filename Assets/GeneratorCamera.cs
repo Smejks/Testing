@@ -7,6 +7,7 @@ public class GeneratorCamera : MonoBehaviour
     Vector3 startPos;
     Vector3 endPos;
 
+
     void Start()
     {
         startPos = new Vector3(23, -40, -10);
@@ -17,7 +18,14 @@ public class GeneratorCamera : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.G)) {
+            if (transform.position.y > -110)
+                ScrollDown();
+            if (transform.position.y < -30)
+                ScrollUp();
+        }
+
+
     }
 
     public void ScrollDown()
@@ -27,7 +35,7 @@ public class GeneratorCamera : MonoBehaviour
 
     public void ScrollUp()
     {
-        transform.position = Vector3.Lerp(endPos, startPos, 0.9f);
+        transform.position = Vector3.Lerp(transform.position, startPos, 0.9f);
     }
 
 

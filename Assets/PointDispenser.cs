@@ -43,7 +43,6 @@ public class PointDispenser : MonoBehaviour
 
     void RemovePoints()
     {
-        Camera.main.GetComponent<GeneratorCamera>().ScrollUp();
         for (int i = 0; i < activePoints.Count; i++) {
             Destroy(activePoints[i].gameObject);
             stats[0].GetComponent<PointCounter>().points = 0;
@@ -62,7 +61,6 @@ public class PointDispenser : MonoBehaviour
 
     IEnumerator LaunchPoints()
     {
-        Camera.main.GetComponent<GeneratorCamera>().ScrollDown();
         for (int i = 0; i < 16; i++) {
             yield return new WaitForSeconds(0.05f);
             activePoints.Add(Instantiate(point, new Vector2(Random.Range(10, 40), -10), Quaternion.identity));

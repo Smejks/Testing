@@ -10,6 +10,7 @@ public class Point : MonoBehaviour
 
     void Start()
     {
+        transform.localScale = new Vector3(Random.Range(0.5f, 2), Random.Range(0.5f, 2), 1);
         randomVector = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
         randomVector = randomVector.normalized;
         force = Random.Range(5000, 10000);
