@@ -13,7 +13,7 @@ public class PointDispenser : MonoBehaviour
     [SerializeField] GameObject wall;
     [SerializeField] GameObject point;
     [SerializeField] float offset;
-    [SerializeField] List<GameObject> activePoints = new List<GameObject>();
+    public List<GameObject> activePoints = new List<GameObject>();
     [SerializeField] List<GameObject> stats = new List<GameObject>();
     public int damage, fireRate, projectileSpeed, heatSink;
 

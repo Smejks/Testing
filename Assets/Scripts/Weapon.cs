@@ -21,6 +21,8 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
+
+
         damage = pointDispenser.damage;
         fireRate = pointDispenser.fireRate;
         projectileSpeed = pointDispenser.projectileSpeed;
@@ -34,6 +36,10 @@ public class Weapon : MonoBehaviour
                 _bullet.transform.parent = transform;
                 heat += 25 + damage * 2 - heatSink - fireRate / 2 - projectileSpeed / 2;
                 timer = 0;
+
+                foreach (var point in pointDispenser.activePoints) {
+                    point.GetComponent<Point>().ShakePoints();
+                }
             }
         }
 

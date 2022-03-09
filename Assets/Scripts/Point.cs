@@ -20,9 +20,13 @@ public class Point : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) {
-            randomVector = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
-            rb.AddForce(randomVector * 500 * Time.deltaTime, ForceMode2D.Impulse);
-        }
+
     }
+
+    public void ShakePoints()
+    {
+        randomVector = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+        rb.AddForce(randomVector * 500 * Time.deltaTime, ForceMode2D.Impulse);
+    }
+
 }
