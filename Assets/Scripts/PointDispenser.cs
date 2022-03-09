@@ -21,10 +21,12 @@ public class PointDispenser : MonoBehaviour
 
     void Start()
     {
-        damage = 1;
-        fireRate = 1;
-        projectileSpeed = 1;
-        heatSink = 1;
+        //damage = 1;
+        //fireRate = 1;
+        //projectileSpeed = 1;
+        //heatSink = 1;
+        
+        StartCoroutine(LaunchPoints());
 
         for (int i = 0; i < 4; i++) {
             stats.Add(Instantiate(receptacle, new Vector2(i * offset, -100), Quaternion.identity));
@@ -73,10 +75,10 @@ public class PointDispenser : MonoBehaviour
 
         yield return new WaitForSeconds(5);
 
-        //damage = 16;
-        //fireRate = 16;
-        //projectileSpeed = 16;
-        //heatSink = 16;
+        //damage = 8;
+        //fireRate = 8;
+        //projectileSpeed = 1;
+        //heatSink = 1;
 
         damage = stats[0].GetComponent<PointCounter>().points;
         fireRate = stats[1].GetComponent<PointCounter>().points;

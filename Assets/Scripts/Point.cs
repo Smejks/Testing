@@ -14,13 +14,14 @@ public class Point : MonoBehaviour
         randomVector = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
         randomVector = randomVector.normalized;
         force = Random.Range(5000, 10000);
-        //force = 10000;
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(randomVector * force * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     void Update()
     {
-        
+        if (Input.GetButtonDown("Fire1")) {
+            rb.AddForce(Vector2.up * 500 * Time.deltaTime, ForceMode2D.Impulse);
+        }
     }
 }

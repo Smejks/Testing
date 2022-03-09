@@ -26,12 +26,12 @@ public class Weapon : MonoBehaviour
         projectileSpeed = pointDispenser.projectileSpeed;
         heatSink = pointDispenser.heatSink;
 
-        timer += Time.deltaTime * 30;
+        timer += Time.deltaTime * 40;
         if (Input.GetButton("Fire1")) {
-            if (timer > 16.1f - fireRate && !overheat) {
+            if (timer > 17 - fireRate && !overheat) {
                 GameObject _bullet = Instantiate(bullet, transform.position, Quaternion.identity);
                 _bullet.transform.parent = transform;
-                heat += 25 - heatSink;
+                heat += 25 + damage * 2 - heatSink - fireRate / 2 - projectileSpeed / 2;
                 timer = 0;
             }
         }
@@ -43,7 +43,7 @@ public class Weapon : MonoBehaviour
             heat -= heatSink * Time.deltaTime * 8;
 
         heat = Mathf.Clamp(heat, 0, 150);
-        indicator.transform.localScale = new Vector3(1.5f, 0 + heat * 0.017f, 1);
+        indicator.transform.localScale = new Vector3(2, 0 + heat * 0.025f, 1);
         if (heat >= 100)
             overheat = true;
         if (heat <= 0)

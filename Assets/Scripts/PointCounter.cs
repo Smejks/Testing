@@ -13,7 +13,7 @@ public class PointCounter : MonoBehaviour
 
     void Update()
     {
-        
+        points = Mathf.Clamp(points, 1, 16);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
