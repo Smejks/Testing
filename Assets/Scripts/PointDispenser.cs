@@ -21,11 +21,11 @@ public class PointDispenser : MonoBehaviour
 
     void Start()
     {
-        //damage = 1;
-        //fireRate = 1;
-        //projectileSpeed = 1;
-        //heatSink = 1;
-        
+        damage = 1;
+        fireRate = 1;
+        projectileSpeed = 1;
+        heatSink = 1;
+
         StartCoroutine(LaunchPoints());
 
         for (int i = 0; i < 4; i++) {

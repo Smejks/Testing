@@ -30,6 +30,7 @@ public class Weapon : MonoBehaviour
         if (Input.GetButton("Fire1")) {
             if (timer > 17 - fireRate && !overheat) {
                 GameObject _bullet = Instantiate(bullet, transform.position, Quaternion.identity);
+                GetComponent<AudioPlayer>().PlayFireSound(fireRate, damage);
                 _bullet.transform.parent = transform;
                 heat += 25 + damage * 2 - heatSink - fireRate / 2 - projectileSpeed / 2;
                 timer = 0;
