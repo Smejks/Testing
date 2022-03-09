@@ -6,8 +6,13 @@ public class AudioPlayer : MonoBehaviour
 {
     [SerializeField] List<AudioClip> LightShotSounds = new List<AudioClip>();
     [SerializeField] List<AudioClip> HeavyShotSounds = new List<AudioClip>();
+    [SerializeField] List<AudioClip> HeatSinkSounds = new List<AudioClip>();
     [SerializeField] AudioSource audio0;
     [SerializeField] AudioSource audio1;
+    [SerializeField] AudioSource audio2;
+    [SerializeField] AudioClip jackpot;
+    [SerializeField] AudioClip resetSound;
+    [SerializeField] AudioClip zip;
 
     void Start()
     {
@@ -38,4 +43,43 @@ public class AudioPlayer : MonoBehaviour
             audio1.PlayOneShot(HeavyShotSounds[1]);
         }
     }
+
+    public void PlayOverHeatSound()
+    {
+        audio2.pitch = 1;
+        if (!audio2.isPlaying)
+            audio2.PlayOneShot(HeatSinkSounds[0]);
+    }
+
+    public void PlayCoolDownCompleteSound()
+    {
+        if (audio2.isPlaying)
+            audio2.Stop();
+        audio2.pitch = 1;
+        audio2.PlayOneShot(HeatSinkSounds[1]);
+    }
+
+    public void PlayPointSpawnSound()
+    {
+        audio2.pitch = 1;
+        audio2.PlayOneShot(jackpot);
+    }
+
+    public void PlayStatsReadySound()
+    {
+        if (!audio0.isPlaying)
+            audio0.pitch = 1;
+        audio0.PlayOneShot(resetSound);
+        audio2.pitch = 1;
+        audio2.PlayOneShot(HeatSinkSounds[1]);
+    }
+
+    public void PlayZipSound()
+    {
+        audio0.pitch = 1;
+
+        if (!audio0.isPlaying)
+            audio0.PlayOneShot(zip);
+    }
+
 }

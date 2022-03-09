@@ -8,7 +8,6 @@ public class PointCounter : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     void Update()
@@ -19,6 +18,7 @@ public class PointCounter : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         points++;
+   
     }
 
     private void OnTriggerExit2D(Collider2D collision)

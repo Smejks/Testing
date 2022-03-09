@@ -26,7 +26,7 @@ public class Target : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         timer = 0;
-        damageTaken += collision.transform.GetComponent<Projectile>().damage + collision.transform.GetComponent<Projectile>().projectileSpeed / 100;
+        damageTaken += collision.transform.GetComponent<Projectile>().damage * collision.transform.GetComponent<Projectile>().damage + collision.transform.GetComponent<Projectile>().projectileSpeed / 100;
         
     }
 
