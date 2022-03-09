@@ -40,7 +40,6 @@ public class Movement : MonoBehaviour
 
     private void LateUpdate()
     {
-        Debug.Log(cameraRelative);
         //if (y != 0)
         //{
         //    ApplyThrust();

@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4608256882465445306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4608256882465445304}
+  - component: {fileID: 4608256882465445305}
+  m_Layer: 0
+  m_Name: PointDispenser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4608256882465445304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4608256882465445306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 28.853308, y: 14.713422, z: -16.348276}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4608256882465445305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4608256882465445306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45487a382ab6b3c45b7202df40822536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DAMA: {fileID: 0}
+  RATE: {fileID: 0}
+  PSPD: {fileID: 0}
+  HEAT: {fileID: 0}
+  receptacle: {fileID: 4729212577793095402, guid: b86b99899ffcd8a44a0fe1ce92fb0db5, type: 3}
+  wall: {fileID: 5101495569662433889, guid: 19c56288092f2c941bf978a6e6c15a5b, type: 3}
+  point: {fileID: 7632491464932617653, guid: 986903fdbea92204a84578361aa0360a, type: 3}
+  offset: 14
+  activePoints: []
+  stats: []
+  damage: 4
+  fireRate: 4
+  projectileSpeed: 4
+  heatSink: 4
